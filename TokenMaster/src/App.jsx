@@ -22,14 +22,11 @@ function App() {
     if (window.ethereum) {
       console.log('Ethereum provider found');      
     }
-    console.log("Hello world")
+    
     // Initialize provider     
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     setProvider(provider);  // Set provider     
 
-    console.log('Current account:', account);
-
-    console.log("Hello world")
 
     // Request accounts
     const accounts = await provider.send("eth_requestAccounts", []);
@@ -43,7 +40,7 @@ function App() {
     // Initialize contract     
     const contract = new ethers.Contract(contractAddress, abi, provider);
     setContract(contract);    
-    console.log('Contract:', contract);
+    
     
     // Listen for account changes     
     window.ethereum.on('accountsChanged', async (accounts) => {       
@@ -51,8 +48,7 @@ function App() {
       console.log('Account changed to:', accounts[0]);     
     });      
 
-    const totalOccasions = await contract.totalOccasions();     
-    console.log('Total Occasions:', totalOccasions.toString());
+   
     
     const occasions = []
 
@@ -61,7 +57,7 @@ function App() {
       occasions.push(occasion)
     }
     setOccasions(occasions);
-    console.log('Occasions:', occasions);
+    
   } catch (error) {     
     console.error('Error loading provider or contract:', error);   
   } 

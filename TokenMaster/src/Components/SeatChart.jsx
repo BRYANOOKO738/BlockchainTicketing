@@ -19,11 +19,18 @@ const SeatChart = ({ occasion, contract, provider, setToggle }) => {
     setHasSold(false)
 
     const signer = await provider.getSigner()
+    const balance = await provider.getBalance(await signer.getAddress())
+    
+    if (balance.lt(occasion.cost)) {
+        alert('You have Insufficient Sepolia ETH to purchase ticket')
+        return
+    }
+
     const transaction = await contract.connect(signer).mint(occasion.id, _seat, { value: occasion.cost })
     await transaction.wait()
 
     setHasSold(true)
-  }
+}
 
   useEffect(() => {
     getSeatsTaken()
