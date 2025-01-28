@@ -328,6 +328,13 @@ header {
   margin-top: 15px;
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Example gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 /* ------------------------------------------------------ */
 /* -- SEAT CHART -- */
 

@@ -7,21 +7,22 @@ const Card = ({ occasion, toggle, setToggle, setOccasion }) => {
   }
 
   return (
-    <div className='card'>
-      <div className='card__info'>
+    <div className='card row'>
+      <div className='col'>
+        <h3 className='card__name text-success shadow-name'>
+          {occasion.name}
+        </h3>
+        <p className='card__location'>
+            <span className='m-2'><i class="bi bi-geo-alt-fill "></i></span>
+          <small>{occasion.location}</small>
+        </p>
         <p className='card__date'>
           <strong>{occasion.date}</strong><br />{occasion.time}
         </p>
 
-        <h3 className='card__name'>
-          {occasion.name}
-        </h3>
 
-        <p className='card__location'>
-          <small>{occasion.location}</small>
-        </p>
-
-        <p className='card__cost'>
+   <div className='d-flex '>
+        <p className='card__cost text-warning'>
           <strong>
             {ethers.utils.formatUnits(occasion.cost.toString(), 'ether')}
           </strong>
@@ -45,9 +46,10 @@ const Card = ({ occasion, toggle, setToggle, setOccasion }) => {
             View Seats
           </button>
         )}
+        </div>
       </div>
 
-      <hr />
+     
     </div >
   );
 }

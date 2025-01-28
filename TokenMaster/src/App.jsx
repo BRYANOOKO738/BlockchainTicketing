@@ -96,9 +96,17 @@ useEffect(() => {
     </div>
   </div>
   ) : (
-    <div className="cards">
-      {occasions.map((occasion, index) => (
+    <div className="container mt-4">
+      <h3 className="text-center mb-4 fw-bold text-primary position-relative">
+  Upcoming Events
+  <span className="underline"></span>
+</h3>
+
+  <div className="row">
+    {occasions.map((occasion, index) => (
+      <div className="col-md-4 mb-4" key={index}>
         <Card
+        occasions={occasions}
           occasion={occasion}
           id={index + 1}
           contract={contract}
@@ -107,10 +115,12 @@ useEffect(() => {
           toggle={toggle}
           setToggle={setToggle}
           setOccasion={setOccasion}
-          key={index}
         />
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
+</div>
+
   )}
 </div>
 
